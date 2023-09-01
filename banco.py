@@ -1,6 +1,6 @@
 banco = [
-    {'conta': 1, 'nome': 'Mariana', 'saldo': 159.99},
-    {'conta': 2, 'nome': 'Jonas', 'saldo': 259.99}
+    {'conta': 1, 'nome': 'Mariana', 'saldo': 159.90},
+    {'conta': 2, 'nome': 'Jonas', 'saldo': 259.90}
 ]
 
 conta_atual = 2
@@ -29,8 +29,12 @@ def obterconta(conta: int) -> dict or None:
 def deletarconta(conta: int) -> None:
     cliente = obterconta(conta)
     if cliente:
-        banco.remove(cliente)
-        print("Cliente deletado com sucesso!")
+        confirma = input("Deseja Realmente Excluir? (S/N): ").upper()
+        if confirma == 'S':
+            banco.remove(cliente)
+            print("Cliente deletado com sucesso!")
+        else:
+            print("Infinity Bank Agradece pela preferencia!")
     else:
         print("Cliente não existe!")
 
